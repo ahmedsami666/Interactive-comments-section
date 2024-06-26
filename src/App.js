@@ -9,7 +9,7 @@ import React from "react";
 function App() {
   var [isReply, setReply] = React.useState({})
   var [isPosted, setIsPosted] = React.useState({})
-  
+  var [input, setInput] = React.useState({})
 
   const createReply = (reply, index) => {
     return (
@@ -27,9 +27,9 @@ function App() {
       />   
 
       {isPosted[`${index + 3}`] ?
-      <CommentCard 
+      <Reply 
         score={0}
-        comment={"test"}
+        comment={input[`${index + 3}`]}
         userImg={data.currentUser.image.png}
         userName={data.currentUser.username}
         date={"Just Now"}
@@ -46,7 +46,10 @@ function App() {
       userName={`@${reply.user.username}`}
       isPosted={isPosted} 
       setIsPosted={setIsPosted}
-      id={reply.id}/>: 
+      id={reply.id}
+      input={input}
+      setInput={setInput}
+      setReply={setReply}/>: 
       null}
       </div>
     )
@@ -68,9 +71,9 @@ function App() {
         />
 
         {isPosted[`${index + 1}`] ?
-          <CommentCard 
+          <Reply
           score={0}
-          comment={"test"}
+          comment={input[`${index + 1}`]}
           userImg={data.currentUser.image.png}
           userName={data.currentUser.username}
           date={"Just Now"}
@@ -87,7 +90,10 @@ function App() {
         userName={`@${comment.user.username}`}           
         isPosted={isPosted} 
         setIsPosted={setIsPosted}
-        id={comment.id}/>: 
+        id={comment.id}
+        input={input}
+        setInput={setInput}
+        setReply={setReply}/>: 
         null}
 
         {comment.replies.map(createReply)}
@@ -105,6 +111,9 @@ function App() {
           createReply={createReply}
           isPosted={isPosted}
           setIsPosted={setIsPosted}
+          input={input}
+          setInput={setInput}
+          setReply={setReply}
         />
       </div>
       <CopyRight/>

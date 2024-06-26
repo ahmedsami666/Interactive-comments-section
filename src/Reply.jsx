@@ -19,7 +19,7 @@ const Reply = (props) => {
                     id={props.id}
                     />
                     <p>
-                        <span>@{props.replyingTo} </span>
+                        <span>@{props.replyingTo}</span>
                         {props.comment}
                     </p>
                 </div>
