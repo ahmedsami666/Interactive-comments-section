@@ -8,9 +8,11 @@ const Action = (props) => {
     }
     const handleEdit = (e) => {
         var key = e.target.className
-        props.setEdit(prevState => {
-            return {...prevState, [key]: true}
-        })
+        if (props.userName === props.currentUser) {
+            props.setEdit(prevState => {
+                return {...prevState, [key]: true}
+            })
+        }
     }
     const handleDelete = (e) => {
         var key = e.target.className

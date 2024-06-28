@@ -60,7 +60,8 @@ function App() {
       id={reply.id}
       input={input}
       setInput={setInput}
-      setReply={setReply}/>: 
+      setReply={setReply}
+      setuserReply={setuserReply}/>: 
       null}
       </React.Fragment>
     )

@@ -27,7 +27,7 @@ const Reply = (props) => {
                 isReply={props.isReply}
                 id={props.id}
                 />
-                <p className={props.id} contentEditable={props.edit[`${props.id}`]}>
+                <p className={props.id} contentEditable={props.edit[`${props.id}`] && props.userName === props.currentUser}>
                     <span>@{props.replyingTo}</span>
                     {props.comment}
                 </p>
@@ -40,7 +40,7 @@ const Reply = (props) => {
                 setEdit={props.setEdit}
                 setIsPosted={props.setIsPosted}
                 />
-                {props.edit[props.id] ?
+                {(props.edit[props.id] && props.userName === props.currentUser)?
                     <button onClick={handleClick} className={props.id}>
                         UPDATE
                     </button> :
@@ -65,11 +65,11 @@ const Reply = (props) => {
                     isPosted={props.isPosted} 
                     setIsPosted={props.setIsPosted}
                     />
-                    <p className={props.id} contentEditable={props.edit[`${props.id}`]}>
+                    <p className={props.id} contentEditable={props.edit[`${props.id}`] && props.userName === props.currentUser}>
                         <span>@{props.replyingTo}</span>
                         {props.comment}
                     </p>
-                    {props.edit[props.id] ?
+                    {(props.edit[props.id] && props.userName === props.currentUser) ?
                     <button onClick={handleClick} className={props.id}>
                         UPDATE
                     </button> :

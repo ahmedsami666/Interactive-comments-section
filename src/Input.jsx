@@ -21,15 +21,15 @@ const Input = (props) => {
         props.setReply(prevState => {
             return {...prevState, [key]: false}
         })
-        if (key === "6") {
+        if (key === "3") {
             props.setuserReply(true)
         }
     }
     return (
         <div className="input">
             <img src={props.userImg} alt="user-img"/>
-            <input type="text" placeholder="Add a comment..." onChange={handleChange} value={inputValue} className={props.id === undefined ? '6': props.id}/>
-            <button onClick={handleClick} className={props.id === undefined ? '6' : props.id}>SEND</button>
+            <input type="text" placeholder="Add a comment..." onChange={handleChange} value={inputValue} className={props.id === undefined ? '3': props.id}/>
+            <button onClick={handleClick} className={props.id === undefined ? '3' : props.id}>SEND</button>
         </div>
     )
 }
