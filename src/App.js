@@ -15,7 +15,7 @@ function App() {
 
   const createReply = (reply, index) => {
     return (
-      <div>
+      <React.Fragment>
       <Reply
       score={reply.score}
       comment={reply.content}
@@ -62,13 +62,13 @@ function App() {
       setInput={setInput}
       setReply={setReply}/>: 
       null}
-      </div>
+      </React.Fragment>
     )
   }
 
   const createComment = (comment, index) => {
     return (
-      <div>
+      <React.Fragment>
         <CommentCard 
           score={comment.score}
           comment={comment.content}
@@ -79,6 +79,8 @@ function App() {
           isReply={isReply}
           setReply={setReply}
           id={comment.id}
+          setEdit={setEdit}
+          setIsPosted={setIsPosted}
         />
 
         {isPosted[`${index + 1}`] ?
@@ -113,7 +115,7 @@ function App() {
         null}
 
         {comment.replies.map(createReply)}
-      </div>
+      </React.Fragment>
     )
   }
 
