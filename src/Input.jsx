@@ -3,6 +3,7 @@ const Input = (props) => {
     var [inputValue, setInputValue] = React.useState(`${props.userName}`)
     const handleChange = (e) => {
         setInputValue(`${e.target.value}`)
+        console.log(e.target.className)
         var key = e.target.className
         props.setInput(prevState => {
             return {
@@ -20,12 +21,15 @@ const Input = (props) => {
         props.setReply(prevState => {
             return {...prevState, [key]: false}
         })
+        if (key === "6") {
+            props.setuserReply(true)
+        }
     }
     return (
         <div className="input">
             <img src={props.userImg} alt="user-img"/>
-            <input type="text" placeholder="Add a comment..." onChange={handleChange} value={inputValue} className={props.id}/>
-            <button onClick={handleClick} className={props.id}>SEND</button>
+            <input type="text" placeholder="Add a comment..." onChange={handleChange} value={inputValue} className={props.id === undefined ? '6': props.id}/>
+            <button onClick={handleClick} className={props.id === undefined ? '6' : props.id}>SEND</button>
         </div>
     )
 }

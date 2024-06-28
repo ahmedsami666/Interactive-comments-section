@@ -139,9 +139,6 @@ p {
     color: hsl(238, 40%, 52%);
     font-weight: 700;
 }
-input::first-letter {
-    color: red;
-}
 input::placeholder {
     color: hsl(211, 10%, 45%);
     position: absolute;
@@ -151,7 +148,7 @@ input::placeholder {
 input:active {
     border: solid 1px hsl(211, 10%, 45%);
 }
-.input button {
+button {
     border: none;
     color: white;
     background-color: hsl(238, 40%, 52%);
@@ -169,4 +166,9 @@ input:active {
     justify-items: center;
     align-items: center;
     font-size: 0.75rem;
+}
+.reply button {
+    width: 20%;
+    padding: 0.5rem;
+    justify-self: end;
 }

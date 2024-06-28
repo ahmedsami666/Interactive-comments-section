@@ -10,6 +10,8 @@ function App() {
   var [isReply, setReply] = React.useState({})
   var [isPosted, setIsPosted] = React.useState({})
   var [input, setInput] = React.useState({})
+  var [edit, setEdit] = React.useState({})
+  var [userReply, setuserReply] = React.useState(false)
 
   const createReply = (reply, index) => {
     return (
@@ -24,6 +26,10 @@ function App() {
       currentUser={data.currentUser.username}
       setReply={setReply}
       id={reply.id}
+      edit={edit}
+      setEdit={setEdit}
+      isPosted={isPosted} 
+      setIsPosted={setIsPosted}
       />   
 
       {isPosted[`${index + 3}`] ?
@@ -36,6 +42,11 @@ function App() {
         currentUser={data.currentUser.username}
         isReply={isReply}
         setReply={setReply}
+        edit={edit}
+        setEdit={setEdit}
+        id={reply.id}
+        isPosted={isPosted} 
+        setIsPosted={setIsPosted}
         /> :
         null
       }
@@ -80,6 +91,11 @@ function App() {
           currentUser={data.currentUser.username}
           isReply={isReply}
           setReply={setReply}
+          edit={edit}
+          setEdit={setEdit}
+          id={comment.id}
+          isPosted={isPosted} 
+          setIsPosted={setIsPosted}
           /> :
           null
         }
@@ -105,16 +121,22 @@ function App() {
     <div className="main">
       <div className="cards">
         {data.comments.map(createComment)}
+
+        {userReply ? 
+        null : 
         <Input 
-          userImg={data.currentUser.image.png}
-          userName=''
-          createReply={createReply}
-          isPosted={isPosted}
-          setIsPosted={setIsPosted}
-          input={input}
-          setInput={setInput}
-          setReply={setReply}
-        />
+        userImg={data.currentUser.image.png}
+        userName=''
+        createReply={createReply}
+        isPosted={isPosted}
+        setIsPosted={setIsPosted}
+        input={input}
+        setInput={setInput}
+        setReply={setReply}
+        userReply={userReply}
+        setuserReply={setuserReply}
+        />}
+
       </div>
       <CopyRight/>
     </div>

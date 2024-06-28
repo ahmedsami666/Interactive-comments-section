@@ -4,7 +4,21 @@ const Header = (props) => {
         props.setReply(prevState => {
             return {...prevState, [key]: true}
         })
-      }
+    }
+    const handleEdit = (e) => {
+        var key = e.target.className
+        props.setEdit(prevState => {
+            return {...prevState, [key]: true}
+        })
+    }
+    const handleDelete = (e) => {
+        var key = e.target.className
+        props.setIsPosted(prevState => {
+            return {
+                ...prevState, [key]: false
+            }
+        })
+    }
     return (
         <div className="header">
             <div className={`avatar ${props.currentUser === props.userName ? 'you': null}`}>
@@ -17,11 +31,11 @@ const Header = (props) => {
             <div className="action-current-user">
                 <div className="action delete">
                     <img src='./images/icon-delete.svg' alt="delete"/>
-                    <span>Delete</span>
+                    <span className={props.id} onClick={handleDelete}>Delete</span>
                 </div>
                 <div className="action">
                     <img src='./images/icon-edit.svg' alt="edit"/>
-                    <span>Edit</span>
+                    <span onClick={handleEdit} className={props.id}>Edit</span>
                 </div>
             </div>:
             <div className="action">
